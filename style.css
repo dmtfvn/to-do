@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: Roboto, Arial;
+  font-family: Palanquin, Arial;
 }
 
 .container {
@@ -58,6 +58,7 @@ ul li {
 }
 
 li p {
+  line-height: 1.5;
   margin-left: 12px;
   margin-right: auto;
 }
