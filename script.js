@@ -1,16 +1,17 @@
-const input = document.getElementById('js-input');
-const button = document.getElementById('js-button');
-
 const listContainer = document.querySelector('.js-list-items');
 
+const inputField = document.getElementById('js-input');
+const addButton = document.getElementById('js-button');
+
 const errorMsg = document.querySelector('.js-error-msg');
+const msg = 'Field is empty';
 
 function checkForAnySpace(value) {
   return /\s+/.test(value);
 }
 
-input.addEventListener('input', function () {
-  const curInput = input.value;
+inputField.addEventListener('input', function () {
+  const curInput = inputField.value;
 
   if (curInput.length > 0) {
     errorMsg.innerText = '';
@@ -19,13 +20,11 @@ input.addEventListener('input', function () {
   const isAnySpace = checkForAnySpace(curInput);
 
   if (isAnySpace) {
-    input.setAttribute('maxLength', 100);
+    inputField.setAttribute('maxLength', 100);
   } else {
-    input.setAttribute('maxLength', 20);
+    inputField.setAttribute('maxLength', 20);
   }
 });
-
-const msg = 'Field is empty';
 
 function createNewElement(value) {
   const newItem = document.createElement('li');
@@ -51,13 +50,13 @@ function checkStartForSpace(value) {
   return /^\s+/.test(value);
 }
 
-button.addEventListener('click', function () {
-  const curValue = input.value;
+addButton.addEventListener('click', function () {
+  const curValue = inputField.value;
 
   if (curValue === '') {
     errorMsg.innerText = msg;
 
-    input.focus();
+    inputField.focus();
   } else {
     const isSpaceAtStart = checkStartForSpace(curValue);
 
@@ -66,11 +65,11 @@ button.addEventListener('click', function () {
     }
   }
 
-  input.value = '';
+  inputField.value = '';
 });
 
-input.addEventListener('keydown', function (e) {
-  const curValue = input.value;
+inputField.addEventListener('keydown', function (e) {
+  const curValue = inputField.value;
 
   if (curValue === '') {
     errorMsg.innerText = msg;
@@ -83,12 +82,12 @@ input.addEventListener('keydown', function (e) {
       if (key === 'Enter') {
         createNewElement(curValue);
     
-        input.value = '';
+        inputField.value = '';
 
-        input.blur();
+        inputField.blur();
       }
     } else {
-      input.value = '';
+      inputField.value = '';
     }
   }
 });
