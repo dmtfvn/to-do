@@ -1,0 +1,121 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, Arial;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.app {
+  background: hsl(240, 20%, 97%);
+  width: 100%;
+  padding: 50px 10px 150px;
+}
+
+.title {
+  background: hsl(0, 100%, 100%);
+  box-shadow: 5px 0 10px hsla(0, 100%, 0%, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+ul li {
+  background: hsl(0, 0%, 90%);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 15px;
+  list-style: none;
+}
+
+li p {
+  margin-left: 12px;
+  margin-right: auto;
+}
+
+.icon-start,
+.icon-end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input-button {
+  background: hsl(0, 100%, 100%);
+  box-shadow: 5px 0 10px hsla(0, 100%, 0%, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+  height: 150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+input,
+button {
+  width: 100%;
+  max-width: 380px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+}
+
+input {
+  background: hsl(240, 20%, 95%);
+  margin-top: 15px;
+  padding: 10px 20px;
+}
+
+button {
+  background: hsl(40, 40%, 80%);
+  color: hsl(0, 100%, 100%);
+  font-size: 1.2rem;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: hsl(40, 40%, 75%);
+  }
+}
+
+.input-button div {
+  height: 41px;
+  padding-top: 2px;
+}
+
+.error-msg {
+  color: hsl(40, 20%, 70%);
+  padding-top: 3px;
+}
