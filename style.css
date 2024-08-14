@@ -66,19 +66,18 @@ li p {
   user-select: none;
 }
 
-svg.unmark,
-svg.mark {
+svg {
   flex-shrink: 0;
   cursor: pointer;
 }
 
 svg.unmark {
-  display: none;
+  display: block;
 }
 
 svg.mark {
   fill: hsl(30, 70%, 50%);
-  /* display: none; */
+  display: none;
 }
 
 img {
