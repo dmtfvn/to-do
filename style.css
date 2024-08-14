@@ -59,17 +59,31 @@ ul li {
 }
 
 li p {
+  font-size: 1rem;
   line-height: 1.5;
   margin-left: 12px;
   margin-right: auto;
-  font-size: 1rem;
+  user-select: none;
 }
 
-.icon-start,
-.icon-end {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+svg.unmark,
+svg.mark {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+svg.unmark {
+  display: none;
+}
+
+svg.mark {
+  fill: hsl(30, 70%, 50%);
+  /* display: none; */
+}
+
+img {
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
 
