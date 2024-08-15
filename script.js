@@ -1,108 +1,95 @@
-const listContainer = document.querySelector('.js-list-items');
+const todoForm = document.querySelector('form');
+const todoList = document.getElementById('todo-list');
+const todoInput = document.getElementById('todo-input');
 
-const inputField = document.getElementById('js-input');
-const addButton = document.getElementById('js-button');
+let allTodos = getTodos();
+updateTodoList();
 
-const errorMsg = document.querySelector('.js-error-msg');
-const msg = 'Field is empty';
+function addTodo() {
+  const todoText = todoInput.value.trim();
 
-function checkForAnySpace(value) {
-  return /\s+/.test(value);
+  if (todoText.length > 0) {
+    const todoObj = {
+      text: todoText,
+      complete: false
+    };
+
+    allTodos.push(todoObj);
+
+    updateTodoList();
+    saveTodos();
+
+    todoInput.value = '';
+  }
 }
 
-inputField.addEventListener('input', function () {
-  const curInput = inputField.value;
+function deleteTodo(index) {
+  allTodos = allTodos.filter((_, i) => i !== index);
+  saveTodos();
+  updateTodoList();
+}
 
-  if (curInput.length > 0) {
-    errorMsg.innerText = '';
-  }
-
-  const isAnySpace = checkForAnySpace(curInput);
-
-  if (isAnySpace) {
-    inputField.setAttribute('maxLength', 100);
-  } else {
-    inputField.setAttribute('maxLength', 20);
-  }
-});
-
-function createNewElement(value) {
+function createTodo(todoObj, index) {
   const newItem = document.createElement('li');
+  const itemId = `todo-${index}`;
 
+  const textEl = todoObj.text;
+
+  newItem.className = 'todo';
   newItem.innerHTML = `
-    <svg class="unmark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-      <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-    </svg>
-    <svg class="mark" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-      <path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/>
-    </svg>
-    <p>${value}</p>
-    <img src="icons/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.png" alt="">
+    <input id="${itemId}" type="checkbox">
+    <label class="custom-checkbox" for="${itemId}">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+      </svg>
+    </label>
+    <label class="todo-text" for="${itemId}">${textEl}</label>
+    <button class="delete-button">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+      </svg>
+    </button>
   `;
 
-  listContainer.appendChild(newItem);
+  const deleteBtn = newItem.querySelector('.delete-button');
+  deleteBtn.addEventListener('click', function () {
+    deleteTodo(index);
+  });
+
+  const checkBox = newItem.querySelector('input');
+  checkBox.addEventListener('change', function () {
+    allTodos[index].complete = checkBox.checked;
+    saveTodos();
+  });
+
+  checkBox.checked = todoObj.complete;
+
+  return newItem;
 }
 
-function checkStartForSpace(value) {
-  return /^\s+/.test(value);
+function updateTodoList() {
+  todoList.innerHTML = '';
+
+  allTodos.forEach((todoObj, index) => {
+    const todoItem = createTodo(todoObj, index);
+
+    todoList.append(todoItem);
+  });
 }
 
-addButton.addEventListener('click', function () {
-  const curValue = inputField.value;
+function saveTodos() {
+  const todosJson = JSON.stringify(allTodos);
 
-  if (curValue === '') {
-    errorMsg.innerText = msg;
+  localStorage.setItem('todos', todosJson);
+}
 
-    inputField.focus();
-  } else {
-    const isSpaceAtStart = checkStartForSpace(curValue);
+function getTodos() {
+  const data = localStorage.getItem('todos') || '[]';
 
-    if (!isSpaceAtStart) {
-      createNewElement(curValue);
-    }
-  }
+  return JSON.parse(data);
+}
 
-  inputField.value = '';
-});
-
-inputField.addEventListener('keydown', function (e) {
-  const curValue = inputField.value;
-
-  if (curValue === '') {
-    errorMsg.innerText = msg;
-  } else {
-    const isSpaceAtStart = checkStartForSpace(curValue);
-
-    if (!isSpaceAtStart) {
-      const key = e.key;
-
-      if (key === 'Enter') {
-        createNewElement(curValue);
-    
-        inputField.value = '';
-
-        inputField.blur();
-      }
-    } else {
-      inputField.value = '';
-    }
-  }
-});
-
-listContainer.addEventListener('click', function (e) {
-  if (e.target.tagName === 'svg') {
-    const svgIcons = document.getElementsByTagName('svg');
-
-    if (svgIcons['0'].classList.contains('unmark')) {
-      svgIcons['0'].style.display = 'none';
-      svgIcons['1'].style.display = 'block';
-    } else if (svgIcons['1'].classList.contains('mark')) {
-      svgIcons['0'].style.display = 'block';
-      svgIcons['1'].style.display = 'none';
-    }
-  }
-
-  if (e.target.tagName === 'IMG') {
-    e.target.parentElement.remove();
-  }
+todoForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  addTodo();
 });

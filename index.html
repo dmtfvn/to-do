@@ -14,18 +14,13 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <div class="app">
-      <div class="title">T&#9673; D&#9678;</div>
-      <ul class="js-list-items"></ul>
-      <div class="input-button">
-        <input id="js-input" type="text" placeholder="Add a to-do">
-        <div>
-          <p class="js-error-msg"></p>
-        </div>
-        <button id="js-button" type="button">Add</button>
-      </div>
-    </div>
+  <div class="todo-logo">T&#9673; D&#9678;</div>
+  <div class="wrapper">
+    <ul id="todo-list"></ul>
+    <form>
+      <input class="input" id="todo-input" type="text" placeholder="Add a to-do" autocomplete="off">
+      <button class="button" id="add-button" type="submit">Add</button>
+    </form>
   </div>
 </body>
 </html>
