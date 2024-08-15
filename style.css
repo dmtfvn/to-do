@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 50px 10px 150px;
+  padding: 50px 10px 130px;
   overflow-y: scroll;
 }
 
@@ -43,7 +43,6 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  /* gap: 10px; */
 }
 
 .input {
@@ -102,6 +101,7 @@ form {
   flex-grow: 1;
   padding: 15px;
   user-select: none;
+  line-height: 1.5;
   transition: 150ms ease;
 }
 

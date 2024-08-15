@@ -92,4 +92,6 @@ function getTodos() {
 todoForm.addEventListener('submit', function (e) {
   e.preventDefault();
   addTodo();
+
+  todoInput.blur();
 });
