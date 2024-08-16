@@ -100,9 +100,9 @@ form {
 .todo-text {
   flex-grow: 1;
   padding: 15px;
-  user-select: none;
   line-height: 1.5;
   transition: 150ms ease;
+  word-break: break-all;
 }
 
 .delete-button {

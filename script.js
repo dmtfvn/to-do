@@ -29,11 +29,11 @@ function deleteTodo(index) {
   updateTodoList();
 }
 
-function createTodo(todoObj, index) {
+function createTodo(obj, index) {
   const newItem = document.createElement('li');
   const itemId = `todo-${index}`;
 
-  const textEl = todoObj.text;
+  const textEl = obj.text;
 
   newItem.className = 'todo';
   newItem.innerHTML = `
@@ -43,7 +43,7 @@ function createTodo(todoObj, index) {
         <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
       </svg>
     </label>
-    <label class="todo-text" for="${itemId}">${textEl}</label>
+    <p class="todo-text">${textEl}</p>
     <button class="delete-button">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
         <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
@@ -62,7 +62,7 @@ function createTodo(todoObj, index) {
     saveTodos();
   });
 
-  checkBox.checked = todoObj.complete;
+  checkBox.checked = obj.complete;
 
   return newItem;
 }
@@ -70,8 +70,8 @@ function createTodo(todoObj, index) {
 function updateTodoList() {
   todoList.innerHTML = '';
 
-  allTodos.forEach((todoObj, index) => {
-    const todoItem = createTodo(todoObj, index);
+  allTodos.forEach((obj, index) => {
+    const todoItem = createTodo(obj, index);
 
     todoList.append(todoItem);
   });
