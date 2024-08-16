@@ -1,3 +1,9 @@
+:root {
+  --yt-clr: hsl(0, 100%, 100%);
+  --gy-ish-clr: hsl(212, 5%, 75%);
+  --bk-ish-clr: hsla(0, 100%, 0%, 0.05);
+}
+
 *,
 *::before,
 *::after {
@@ -10,7 +16,7 @@
 }
 
 html {
-  font-family: Palanquin, Arial;
+  font-family: Roboto, Arial;
 }
 
 body {
@@ -24,8 +30,8 @@ body {
 }
 
 .todo-logo {
-  background-color: hsl(0, 100%, 100%);
-  box-shadow: 5px 0 10px hsla(0, 100%, 0%, 0.05);
+  background-color: var(--yt-clr);
+  box-shadow: 5px 0 10px var(--bk-ish-clr);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +53,6 @@ body {
 
 .input {
   background-color: hsl(240, 20%, 95%);
-  caret-color: red;
   margin-bottom: auto;
   padding: 10px 20px;
   &:focus {
@@ -57,7 +62,7 @@ body {
 
 .button {
   background-color: hsl(40, 40%, 80%);
-  color: hsl(0, 100%, 100%);
+  color: var(--yt-clr);
   font-size: 1.2rem;
   padding: 10px;
   cursor: pointer;
@@ -75,8 +80,8 @@ body {
 }
 
 form {
-  background-color: hsl(0, 100%, 100%);
-  box-shadow: 5px 0 10px hsla(0, 100%, 0%, 0.05);
+  background-color: var(--yt-clr);
+  box-shadow: 5px 0 10px var(--bk-ish-clr);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,11 +103,12 @@ form {
 }
 
 .todo-text {
+  color: hsl(0, 1%, 20%);
   flex-grow: 1;
   padding: 15px;
   line-height: 1.5;
   transition: 150ms ease;
-  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .delete-button {
@@ -115,9 +121,10 @@ form {
 }
 
 .delete-button svg {
+  fill: var(--gy-ish-clr);
   transition: 150ms ease;
   &:hover {
-    fill: red;
+    fill: hsl(213, 4.5%, 39%);
   }
 }
 
@@ -128,7 +135,7 @@ form {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  border: 2px solid hsl(0, 100%, 100%);
+  border: 2px solid var(--yt-clr);
   border-radius: 50%;
   transition: 150ms ease;
   cursor: pointer;
@@ -139,15 +146,15 @@ form {
 }
 
 input[type="checkbox"]:checked ~ .custom-checkbox {
-  background-color: hsl(212, 5%, 75%);
+  background-color: var(--gy-ish-clr);
 }
 
 input[type="checkbox"]:checked ~ .custom-checkbox svg {
-  fill: hsl(0, 100%, 100%);
+  fill: var(--yt-clr);
 }
 
 input[type="checkbox"]:checked ~ .todo-text {
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 input[type="checkbox"] {
