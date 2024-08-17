@@ -2,6 +2,53 @@ const todoForm = document.querySelector('form');
 const todoList = document.getElementById('todo-list');
 const todoInput = document.getElementById('todo-input');
 
+const todoMsg = document.getElementById('todo-msg');
+const display = 'block';
+
+function createEmptyListMsg(value) {
+  todoMsg.style.display = `${value}`;
+  todoMsg.innerHTML = `
+    <p class="empty-list-msg">Your to-do list is empty</p>
+    <img class="empty-list-img" src="/empty-list.png">
+  `;
+}
+
+createEmptyListMsg(display);
+
+function hideEmptyListMsg() {
+  return todoMsg.style.display = 'none';
+}
+
+const hideResult = hideEmptyListMsg();
+
+function showEmptyListMsg() {
+  return todoMsg.style.display = 'block';
+}
+
+const showResult = showEmptyListMsg();
+
+function saveEmptyListMsg() {
+  if (todoMsg.style.display === hideResult) {
+    localStorage.setItem('display', hideResult);
+  } else if (todoMsg.style.display === showResult) {
+    localStorage.setItem('display', showResult);
+  }
+}
+
+function getEmptyListDisplayState() {
+  const displayState = localStorage.getItem('display');
+
+  return displayState;
+}
+
+const getResult = getEmptyListDisplayState();
+
+function updateEmptyListMsg() {
+  createEmptyListMsg(getResult);
+}
+
+updateEmptyListMsg();
+
 let allTodos = getTodos();
 updateTodoList();
 
@@ -14,10 +61,15 @@ function addTodo() {
       complete: false
     };
 
-    allTodos.push(todoObj);
+    allTodos.unshift(todoObj);
 
-    updateTodoList();
+    if (allTodos.length > 0) {
+      hideEmptyListMsg();
+      saveEmptyListMsg();
+    }
+
     saveTodos();
+    updateTodoList();
 
     todoInput.value = '';
   }
@@ -25,6 +77,12 @@ function addTodo() {
 
 function deleteTodo(index) {
   allTodos = allTodos.filter((_, i) => i !== index);
+
+  if (allTodos.length === 0) {
+    showEmptyListMsg();
+    saveEmptyListMsg();
+  }
+
   saveTodos();
   updateTodoList();
 }
