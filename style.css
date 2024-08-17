@@ -48,9 +48,8 @@ body {
 }
 
 .empty-list-msg {
-  color: hsl(285, 20%, 70%);
-  font-weight: 500;
-  margin-bottom: 30px;
+  color: hsl(290, 25%, 75%);
+  margin-top: 15px;
   text-align: center;
 }
 
