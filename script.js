@@ -9,7 +9,7 @@ function createEmptyListMsg(value) {
   todoMsg.style.display = `${value}`;
   todoMsg.innerHTML = `
     <p class="empty-list-msg">Your to-do list is empty</p>
-    <img class="empty-list-img" src="/empty-list.png">
+    <img class="empty-list-img" src="empty-list.png">
   `;
 }
 
