@@ -43,6 +43,19 @@ body {
   position: fixed;
 }
 
+.todo-logo p {
+  color: hsl(40, 40%, 60%);
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.todo-logo svg {
+  fill: hsl(40, 60%, 65%);
+  &:nth-child(2) {
+    margin-right: 8px;
+  }
+}
+
 .empty-msg-container {
   margin: auto 0;
 }
