@@ -2,52 +2,42 @@ const todoForm = document.querySelector('form');
 const todoList = document.getElementById('todo-list');
 const todoInput = document.getElementById('todo-input');
 
-const todoMsg = document.getElementById('todo-msg');
-const display = 'block';
+const todoEmptyMsg = document.getElementById('todo-empty-msg');
 
 function createEmptyListMsg(value) {
-  todoMsg.style.display = `${value}`;
-  todoMsg.innerHTML = `
+  todoEmptyMsg.style.display = `${value}`;
+  todoEmptyMsg.innerHTML = `
     <img class="empty-list-img" src="empty-list.png">
-    <p class="empty-list-msg">Your to-do list is empty</p>
+    <p class="empty-list-text">Your to-do list is empty</p>
   `;
 }
 
-createEmptyListMsg(display);
-
 function hideEmptyListMsg() {
-  return todoMsg.style.display = 'none';
+  return todoEmptyMsg.style.display = 'none';
 }
-
-const hideResult = hideEmptyListMsg();
+const hiddenResult = hideEmptyListMsg();
 
 function showEmptyListMsg() {
-  return todoMsg.style.display = 'block';
+  return todoEmptyMsg.style.display = 'block';
 }
-
-const showResult = showEmptyListMsg();
+const shownResult = showEmptyListMsg();
 
 function saveEmptyListMsg() {
-  if (todoMsg.style.display === hideResult) {
-    localStorage.setItem('display', hideResult);
-  } else if (todoMsg.style.display === showResult) {
-    localStorage.setItem('display', showResult);
+  if (todoEmptyMsg.style.display === hiddenResult) {
+    localStorage.setItem('display', hiddenResult);
+  } else if (todoEmptyMsg.style.display === shownResult) {
+    localStorage.setItem('display', shownResult);
   }
 }
 
 function getEmptyListDisplayState() {
-  const displayState = localStorage.getItem('display');
+  const curDisplayState = localStorage.getItem('display');
 
-  return displayState;
+  return curDisplayState;
 }
+const displayResult = getEmptyListDisplayState();
 
-const getResult = getEmptyListDisplayState();
-
-function updateEmptyListMsg() {
-  createEmptyListMsg(getResult);
-}
-
-updateEmptyListMsg();
+createEmptyListMsg(displayResult);
 
 let allTodos = getTodos();
 updateTodoList();
@@ -75,8 +65,8 @@ function addTodo() {
   }
 }
 
-function deleteTodo(index) {
-  allTodos = allTodos.filter((_, i) => i !== index);
+function deleteTodo(idx) {
+  allTodos = allTodos.filter((_, i) => i !== idx);
 
   if (allTodos.length === 0) {
     showEmptyListMsg();
@@ -87,21 +77,21 @@ function deleteTodo(index) {
   updateTodoList();
 }
 
-function createTodo(obj, index) {
-  const newItem = document.createElement('li');
-  const itemId = `todo-${index}`;
+function createTodo(object, index) {
+  const newElem = document.createElement('li');
+  const elemId = `todo-${index}`;
 
-  const textEl = obj.text;
+  const string = object.text;
 
-  newItem.className = 'todo';
-  newItem.innerHTML = `
-    <input id="${itemId}" type="checkbox">
-    <label class="custom-checkbox" for="${itemId}">
+  newElem.className = 'todo';
+  newElem.innerHTML = `
+    <input id="${elemId}" type="checkbox">
+    <label class="custom-checkbox" for="${elemId}">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
         <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
       </svg>
     </label>
-    <p class="todo-text">${textEl}</p>
+    <p class="todo-text">${string}</p>
     <button class="delete-button">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
         <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
@@ -109,27 +99,26 @@ function createTodo(obj, index) {
     </button>
   `;
 
-  const deleteBtn = newItem.querySelector('.delete-button');
+  const deleteBtn = newElem.querySelector('.delete-button');
   deleteBtn.addEventListener('click', function () {
     deleteTodo(index);
   });
 
-  const checkBox = newItem.querySelector('input');
+  const checkBox = newElem.querySelector('input');
   checkBox.addEventListener('change', function () {
     allTodos[index].complete = checkBox.checked;
     saveTodos();
   });
+  checkBox.checked = object.complete;
 
-  checkBox.checked = obj.complete;
-
-  return newItem;
+  return newElem;
 }
 
 function updateTodoList() {
   todoList.innerHTML = '';
 
-  allTodos.forEach((obj, index) => {
-    const todoItem = createTodo(obj, index);
+  allTodos.forEach((obj, i) => {
+    const todoItem = createTodo(obj, i);
 
     todoList.append(todoItem);
   });

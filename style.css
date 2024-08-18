@@ -43,12 +43,12 @@ body {
   position: fixed;
 }
 
-.msg-container {
+.empty-msg-container {
   margin: auto 0;
 }
 
-.empty-list-msg {
-  color: hsl(290, 25%, 75%);
+.empty-list-text {
+  color: hsl(0, 1%, 55%);
   margin-top: 15px;
   text-align: center;
 }
@@ -171,7 +171,7 @@ input[type="checkbox"]:checked ~ .custom-checkbox svg {
 }
 
 input[type="checkbox"]:checked ~ .todo-text {
-  opacity: 0.15;
+  color: var(--gy-ish-clr);
 }
 
 input[type="checkbox"] {
