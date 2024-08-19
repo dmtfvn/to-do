@@ -73,8 +73,7 @@ body {
 }
 
 .wrapper {
-  width: 400px;
-  max-width: 100%;
+  width: min(400px, 100%);
   display: flex;
   flex-direction: column;
 }
@@ -89,13 +88,13 @@ body {
 }
 
 .button {
-  background-color: hsl(40, 40%, 75%);
+  background-color: hsl(35, 40%, 75%);
   color: var(--yt-clr);
   font-size: 1.2rem;
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background-color: hsl(40, 40%, 70%);
+    background-color: hsl(35, 40%, 70%);
   }
 }
 
