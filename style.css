@@ -25,6 +25,7 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100dvh;
+  font-size: 1rem;
   padding: 50px 10px 130px;
   overflow-y: scroll;
 }
@@ -189,4 +190,9 @@ input[type="checkbox"]:checked ~ .todo-text {
 
 input[type="checkbox"] {
   display: none;
+}
+
+input[type="text"],
+select:focus {
+  font-size: inherit;
 }
