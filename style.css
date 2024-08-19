@@ -45,7 +45,7 @@ body {
 }
 
 .todo-logo p {
-  color: hsl(40, 40%, 60%);
+  color: hsl(40, 30%, 50%);
   font-size: 1.8rem;
   font-weight: 300;
 }
@@ -89,13 +89,13 @@ body {
 }
 
 .button {
-  background-color: hsl(40, 40%, 80%);
+  background-color: hsl(40, 40%, 75%);
   color: var(--yt-clr);
   font-size: 1.2rem;
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background-color: hsl(40, 40%, 75%);
+    background-color: hsl(40, 40%, 70%);
   }
 }
 
