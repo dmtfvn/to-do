@@ -66,7 +66,7 @@ function addTodo() {
 }
 
 function deleteTodo(idx) {
-  allTodos = allTodos.filter((_, i) => i !== idx);
+  allTodos.splice(idx,1);
 
   if (allTodos.length === 0) {
     showEmptyListMsg();
@@ -120,7 +120,7 @@ function updateTodoList() {
   allTodos.forEach((obj, i) => {
     const todoItem = createTodo(obj, i);
 
-    todoList.append(todoItem);
+    todoList.appendChild(todoItem);
   });
 }
 
