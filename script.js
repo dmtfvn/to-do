@@ -114,6 +114,11 @@ function createTodo(object, index) {
   return newElem;
 }
 
+function scrollBodyTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 function updateTodoList() {
   todoList.innerHTML = '';
 
@@ -121,8 +126,7 @@ function updateTodoList() {
     const todoItem = createTodo(obj, i);
 
     todoList.appendChild(todoItem);
-
-    todoItem.scrollTop = todoItem.scrollHeight;
+    scrollBodyTop();
   });
 }
 
