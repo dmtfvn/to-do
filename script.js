@@ -120,7 +120,7 @@ function updateTodoList() {
   allTodos.forEach((obj, i) => {
     const todoItem = createTodo(obj, i);
 
-    todoList.appendChild(todoItem);
+    todoList.append(todoItem);
   });
 }
 
