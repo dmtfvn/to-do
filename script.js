@@ -121,6 +121,8 @@ function updateTodoList() {
     const todoItem = createTodo(obj, i);
 
     todoList.appendChild(todoItem);
+
+    todoItem.scrollTop = todoItem.scrollHeight;
   });
 }
 
