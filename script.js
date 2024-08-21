@@ -66,7 +66,7 @@ function addTodo() {
 }
 
 function deleteTodo(idx) {
-  allTodos.splice(idx,1);
+  allTodos = allTodos.filter((_, i) => i !== idx);
 
   if (allTodos.length === 0) {
     showEmptyListMsg();
