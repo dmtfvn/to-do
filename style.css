@@ -93,9 +93,6 @@ body {
   font-size: 1.2rem;
   padding: 10px;
   cursor: pointer;
-  &:hover {
-    background-color: hsl(35, 40%, 70%);
-  }
 }
 
 .input,
@@ -153,9 +150,6 @@ form {
 .delete-button svg {
   fill: var(--gy-ish-clr);
   transition: 150ms ease;
-  &:hover {
-    fill: hsl(213, 4.5%, 39%);
-  }
 }
 
 .custom-checkbox {
@@ -194,4 +188,17 @@ input[type="checkbox"] {
 input[type="text"],
 select:focus {
   font-size: inherit;
+}
+
+@media (min-width: 768px) {
+  .button {
+    &:hover {
+      background-color: hsl(35, 40%, 70%);
+    }
+  }
+  .delete-button svg {
+    &:hover {
+      fill: hsl(213, 4.5%, 39%);
+    }
+  }
 }
