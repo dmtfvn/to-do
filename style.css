@@ -57,7 +57,7 @@ body {
   }
 }
 
-.empty-msg-container {
+.empty-list-container {
   margin: auto 0;
 }
 
@@ -72,10 +72,22 @@ body {
   max-width: 100%;
 }
 
-.wrapper {
+.list-items {
   width: min(400px, 100%);
+}
+
+form {
+  background-color: var(--yt-clr);
+  box-shadow: 5px 0 10px var(--bk-ish-clr);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  height: 130px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
 }
 
 .input {
@@ -97,27 +109,12 @@ body {
 
 .input,
 .button {
-  width: 400px;
-  max-width: 100%;
+  width: min(400px, 100%);
   border: none;
   border-radius: 15px;
 }
 
-form {
-  background-color: var(--yt-clr);
-  box-shadow: 5px 0 10px var(--bk-ish-clr);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px 10px;
-  height: 130px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-}
-
-.todo {
+.todo-element {
   background-color: hsl(0, 0%, 90%);
   display: flex;
   align-items: center;
@@ -138,7 +135,7 @@ form {
   overflow-wrap: anywhere;
 }
 
-.delete-button {
+.todo-delete-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,12 +144,12 @@ form {
   cursor: pointer;
 }
 
-.delete-button svg {
+.todo-delete-button svg {
   fill: var(--gy-ish-clr);
   transition: 150ms ease;
 }
 
-.custom-checkbox {
+.todo-custom-checkbox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,15 +162,15 @@ form {
   cursor: pointer;
 }
 
-.custom-checkbox svg {
+.todo-custom-checkbox svg {
   fill: transparent;
 }
 
-input[type="checkbox"]:checked ~ .custom-checkbox {
+input[type="checkbox"]:checked ~ .todo-custom-checkbox {
   background-color: var(--gy-ish-clr);
 }
 
-input[type="checkbox"]:checked ~ .custom-checkbox svg {
+input[type="checkbox"]:checked ~ .todo-custom-checkbox svg {
   fill: var(--yt-clr);
 }
 
@@ -188,17 +185,4 @@ input[type="checkbox"] {
 input[type="text"],
 select:focus {
   font-size: inherit;
-}
-
-@media (min-width: 768px) {
-  .button {
-    &:hover {
-      background-color: hsl(35, 40%, 70%);
-    }
-  }
-  .delete-button svg {
-    &:hover {
-      fill: hsl(213, 4.5%, 39%);
-    }
-  }
 }

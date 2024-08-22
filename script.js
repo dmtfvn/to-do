@@ -1,31 +1,30 @@
-const todoForm = document.querySelector('form');
+const todoEmptyList = document.getElementById('todo-empty-list');
 const todoList = document.getElementById('todo-list');
 const todoInput = document.getElementById('todo-input');
-
-const todoEmptyMsg = document.getElementById('todo-empty-msg');
+const todoForm = document.querySelector('form');
 
 function createEmptyListMsg(value) {
-  todoEmptyMsg.style.display = `${value}`;
-  todoEmptyMsg.innerHTML = `
+  todoEmptyList.style.display = `${value}`;
+  todoEmptyList.innerHTML = `
     <img class="empty-list-img" src="empty-list.png">
     <p class="empty-list-text">Your to-do list is empty</p>
   `;
 }
 
 function hideEmptyListMsg() {
-  return todoEmptyMsg.style.display = 'none';
+  return todoEmptyList.style.display = 'none';
 }
 const hiddenResult = hideEmptyListMsg();
 
 function showEmptyListMsg() {
-  return todoEmptyMsg.style.display = 'block';
+  return todoEmptyList.style.display = 'block';
 }
 const shownResult = showEmptyListMsg();
 
 function saveEmptyListMsg() {
-  if (todoEmptyMsg.style.display === hiddenResult) {
+  if (todoEmptyList.style.display === hiddenResult) {
     localStorage.setItem('display', hiddenResult);
-  } else if (todoEmptyMsg.style.display === shownResult) {
+  } else if (todoEmptyList.style.display === shownResult) {
     localStorage.setItem('display', shownResult);
   }
 }
@@ -83,23 +82,23 @@ function createTodo(object, index) {
 
   const string = object.text;
 
-  newElem.className = 'todo';
+  newElem.className = 'todo-element';
   newElem.innerHTML = `
     <input id="${elemId}" type="checkbox">
-    <label class="custom-checkbox" for="${elemId}">
+    <label class="todo-custom-checkbox" for="${elemId}">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
         <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
       </svg>
     </label>
     <p class="todo-text">${string}</p>
-    <button class="delete-button">
+    <button class="todo-delete-button">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
         <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
       </svg>
     </button>
   `;
 
-  const deleteBtn = newElem.querySelector('.delete-button');
+  const deleteBtn = newElem.querySelector('.todo-delete-button');
   deleteBtn.addEventListener('click', function () {
     deleteTodo(index);
   });
