@@ -4,6 +4,11 @@ const todoList = document.getElementById('todo-list');
 const todoForm = document.querySelector('form');
 const todoInput = document.getElementById('todo-input');
 
+todoInput.addEventListener('focusin', function () {
+  window.scrollTo(0, 0);
+  scrollBodyTop();
+});
+
 function createEmptyListMsg(value) {
   todoEmptyList.style.display = `${value}`;
   todoEmptyList.innerHTML = `
