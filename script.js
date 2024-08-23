@@ -1,7 +1,8 @@
 const todoEmptyList = document.getElementById('todo-empty-list');
 const todoList = document.getElementById('todo-list');
-const todoInput = document.getElementById('todo-input');
+
 const todoForm = document.querySelector('form');
+const todoInput = document.getElementById('todo-input');
 
 function createEmptyListMsg(value) {
   todoEmptyList.style.display = `${value}`;
