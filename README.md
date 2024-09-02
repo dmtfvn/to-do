@@ -4,4 +4,4 @@ An everyday helper, contributing to keep track of your things to do. They can be
 
 #### The web app can be used on any device - desktop, tablet, mobile device.  
 
-To try it out, simply click ➡️ [TO DO](https://dmtfvn.github.io/to-do/)
+To try it out, simply click ➡ [TO DO](https://dmtfvn.github.io/to-do/)
