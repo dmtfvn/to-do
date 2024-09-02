@@ -2,6 +2,6 @@
 
 An everyday helper, contributing to keep track of your things to do. They can be marked when completed, or unmarked, if not. The state of a task is saved, and If one is no longer needed, it can be deleted as well.  
 
-#### The web app can be used on any device - desktop, tablet, mobile device.  
+## The web app can be used on any device - desktop, tablet, mobile device.  
 
-To try it out, simply click ➡ [TO DO](https://dmtfvn.github.io/to-do/)
+To try it out, simply click the link > [TO DO](https://dmtfvn.github.io/to-do/)
