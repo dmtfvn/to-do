@@ -1,6 +1,6 @@
 # Simple to-do web app
 
-A single-page application, contributing to keep track of your things to do. They can be marked when completed, or unmarked, if not. The state of a task is saved, and If one is no longer needed, it can be deleted as well.
+A single-page application, contributing to keep track of your things to do. They can be marked when completed, or unmarked, if not. All tasks and their states are saved, and If one is no longer needed, it can be deleted.
 
 This project was entirely created by using pure vanilla javascript.
 
