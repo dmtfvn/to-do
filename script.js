@@ -6,10 +6,17 @@ const todoInput = document.getElementById('todo-input');
 
 function createEmptyListMsg(value) {
   todoEmptyList.style.display = `${value}`;
-  todoEmptyList.innerHTML = `
-    <img class="empty-list-img" src="empty-list.png">
-    <p class="empty-list-text">Your to-do list is empty</p>
-  `;
+
+  const imgEl = document.createElement('img');
+  imgEl.className = 'empty-list-img';
+  imgEl.src = 'empty-list.png';
+
+  const pEl = document.createElement('p');
+  pEl.className = 'empty-list-text';
+  pEl.textContent = 'Your to-do list is empty';
+
+  todoEmptyList.appendChild(imgEl);
+  todoEmptyList.appendChild(pEl);
 }
 
 function hideEmptyListMsg() {
@@ -18,7 +25,7 @@ function hideEmptyListMsg() {
 const hiddenResult = hideEmptyListMsg();
 
 function showEmptyListMsg() {
-  return todoEmptyList.style.display = 'block';
+  return todoEmptyList.style.display = 'inline';
 }
 const shownResult = showEmptyListMsg();
 
@@ -78,26 +85,37 @@ function deleteTodo(idx) {
 }
 
 function createTodo(object, index) {
-  const newElem = document.createElement('li');
   const elemId = `todo-${index}`;
-
   const string = object.text;
 
+  const newElem = document.createElement('li');
   newElem.className = 'todo-element';
-  newElem.innerHTML = `
-    <input id="${elemId}" type="checkbox">
-    <label class="todo-custom-checkbox" for="${elemId}">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
-      </svg>
-    </label>
-    <p class="todo-text">${string}</p>
-    <button class="todo-delete-button">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-      </svg>
-    </button>
+
+  const inputEl = document.createElement('input');
+  inputEl.id = `${elemId}`;
+  inputEl.type = 'checkbox';
+
+  const labelEl = document.createElement('label');
+  labelEl.className = 'todo-custom-checkbox';
+  labelEl.setAttribute('for', `${elemId}`);
+  labelEl.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
   `;
+
+  const pEl = document.createElement('p');
+  pEl.className = 'todo-text';
+  pEl.textContent = `${string}`;
+
+  const btnEl = document.createElement('button');
+  btnEl.className = 'todo-delete-button';
+  btnEl.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+  `;
+
+  newElem.appendChild(inputEl);
+  newElem.appendChild(labelEl);
+  newElem.appendChild(pEl);
+  newElem.appendChild(btnEl);
 
   const deleteBtn = newElem.querySelector('.todo-delete-button');
   deleteBtn.addEventListener('click', function () {
