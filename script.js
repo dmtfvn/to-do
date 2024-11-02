@@ -98,9 +98,18 @@ function createTodo(object, index) {
   const labelEl = document.createElement('label');
   labelEl.className = 'todo-custom-checkbox';
   labelEl.setAttribute('for', `${elemId}`);
-  labelEl.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
-  `;
+
+  const svgO = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svgO.setAttributeNS(null, 'width', '24px');
+  svgO.setAttributeNS(null, 'height', '24px');
+  svgO.setAttributeNS(null, 'fill', '#5f6368');
+  svgO.setAttributeNS(null, 'viewBox', '0 -960 960 960');
+
+  const pathO = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  pathO.setAttributeNS(null, 'd', 'M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z');
+
+  svgO.appendChild(pathO);
+  labelEl.appendChild(svgO);
 
   const pEl = document.createElement('p');
   pEl.className = 'todo-text';
@@ -108,9 +117,18 @@ function createTodo(object, index) {
 
   const btnEl = document.createElement('button');
   btnEl.className = 'todo-delete-button';
-  btnEl.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
-  `;
+
+  const svgX = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svgX.setAttributeNS(null, 'width', '24px');
+  svgX.setAttributeNS(null, 'height', '24px');
+  svgX.setAttributeNS(null, 'fill', '#5f6368');
+  svgX.setAttributeNS(null, 'viewBox', '0 -960 960 960');
+
+  const pathX = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  pathX.setAttributeNS(null, 'd', 'm256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z');
+
+  svgX.appendChild(pathX);
+  btnEl.appendChild(svgX);
 
   newElem.appendChild(inputEl);
   newElem.appendChild(labelEl);
@@ -138,12 +156,12 @@ function scrollBodyTop() {
 }
 
 function updateTodoList() {
-  todoList.innerHTML = '';
+  todoList.replaceChildren();
 
   allTodos.forEach((obj, i) => {
     const todoItem = createTodo(obj, i);
-
     todoList.appendChild(todoItem);
+
     scrollBodyTop();
   });
 }
