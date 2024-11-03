@@ -36,7 +36,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.25rem;
   height: 50px;
   top: 0;
   left: 0;
@@ -50,8 +49,9 @@ body {
   font-weight: 300;
 }
 
-.todo-logo svg {
-  fill: hsl(40, 60%, 65%);
+.todo-logo img {
+  filter: invert(74%) sepia(33%) saturate(538%) hue-rotate(2deg) brightness(127%) contrast(78%);
+  width: 24px;
 
   &:nth-child(2) {
     margin-right: 8px;
@@ -102,7 +102,7 @@ form {
 }
 
 .button {
-  background-color: hsl(35, 40%, 75%);
+  background-color: hsl(35, 59%, 79%);
   color: var(--yt-clr);
   font-size: 1.2rem;
   padding: 10px;
@@ -185,7 +185,6 @@ input[type="checkbox"] {
   display: none;
 }
 
-input[type="text"],
-select:focus {
+input[type="text"] {
   font-size: inherit;
 }
