@@ -38,9 +38,7 @@ function saveEmptyListMsg() {
 }
 
 function getEmptyListDisplayState() {
-  const curDisplayState = localStorage.getItem('display');
-
-  return curDisplayState;
+  return localStorage.getItem('display');
 }
 const displayResult = getEmptyListDisplayState();
 
