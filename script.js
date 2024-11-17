@@ -141,6 +141,7 @@ function createTodo(object, index) {
   const checkBox = newElem.querySelector('input');
   checkBox.addEventListener('change', function () {
     allTodos[index].complete = checkBox.checked;
+
     saveTodos();
   });
   checkBox.checked = object.complete;
@@ -178,6 +179,7 @@ function getTodos() {
 
 todoForm.addEventListener('submit', function (e) {
   e.preventDefault();
+
   addTodo();
 
   todoInput.blur();
