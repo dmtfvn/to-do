@@ -1,3 +1,5 @@
+import { createSvgEl } from './helpers/createSvg.js';
+
 const todoEmptyList = document.getElementById('todo-empty-list');
 const todoList = document.getElementById('todo-list');
 
@@ -97,16 +99,9 @@ function createTodo(object, index) {
   labelEl.className = 'todo-custom-checkbox';
   labelEl.setAttribute('for', `${elemId}`);
 
-  const svgO = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svgO.setAttributeNS(null, 'width', '24px');
-  svgO.setAttributeNS(null, 'height', '24px');
-  svgO.setAttributeNS(null, 'fill', '#5f6368');
-  svgO.setAttributeNS(null, 'viewBox', '0 -960 960 960');
-
-  const pathO = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  pathO.setAttributeNS(null, 'd', 'M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z');
-
-  svgO.appendChild(pathO);
+  const svgO = createSvgEl(
+    'M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'
+  );
   labelEl.appendChild(svgO);
 
   const pEl = document.createElement('p');
@@ -116,16 +111,9 @@ function createTodo(object, index) {
   const btnEl = document.createElement('button');
   btnEl.className = 'todo-delete-button';
 
-  const svgX = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svgX.setAttributeNS(null, 'width', '24px');
-  svgX.setAttributeNS(null, 'height', '24px');
-  svgX.setAttributeNS(null, 'fill', '#5f6368');
-  svgX.setAttributeNS(null, 'viewBox', '0 -960 960 960');
-
-  const pathX = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  pathX.setAttributeNS(null, 'd', 'm256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z');
-
-  svgX.appendChild(pathX);
+  const svgX = createSvgEl(
+    'm256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z'
+  );
   btnEl.appendChild(svgX);
 
   newElem.appendChild(inputEl);

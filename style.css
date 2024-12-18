@@ -169,15 +169,15 @@ form {
   fill: transparent;
 }
 
-input[type="checkbox"]:checked ~ .todo-custom-checkbox {
+input[type="checkbox"]:checked~.todo-custom-checkbox {
   background-color: var(--gy-ish-clr);
 }
 
-input[type="checkbox"]:checked ~ .todo-custom-checkbox svg {
+input[type="checkbox"]:checked~.todo-custom-checkbox svg {
   fill: var(--yt-clr);
 }
 
-input[type="checkbox"]:checked ~ .todo-text {
+input[type="checkbox"]:checked~.todo-text {
   color: var(--gy-ish-clr);
 }
 
