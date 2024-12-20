@@ -91,6 +91,14 @@ form {
   position: fixed;
 }
 
+.input,
+.button {
+  font-family: Roboto, Arial;
+  width: min(400px, 100%);
+  border: none;
+  border-radius: 15px;
+}
+
 .input {
   background-color: hsl(240, 20%, 95%);
   margin-bottom: auto;
@@ -105,15 +113,9 @@ form {
   background-color: hsl(35, 59%, 79%);
   color: var(--yt-clr);
   font-size: 1.2rem;
+  font-weight: 500;
   padding: 10px;
   cursor: pointer;
-}
-
-.input,
-.button {
-  width: min(400px, 100%);
-  border: none;
-  border-radius: 15px;
 }
 
 .todo-element {
