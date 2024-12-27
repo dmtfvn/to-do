@@ -1,4 +1,4 @@
-export function createSvgEl(pathString) {
+export function createSvg(pathString) {
   const svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svgIcon.setAttribute('width', '24px');
   svgIcon.setAttribute('height', '24px');

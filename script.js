@@ -1,52 +1,22 @@
-import { createSvgEl } from './helpers/createSvg.js';
+import {
+  createEmptyListMsg,
+  hideEmptyListMsg,
+  showEmptyListMsg,
+  saveEmptyListMsg,
+  getEmptyListDisplayState
+} from './utils/emptyListMsg.js';
 
-const todoEmptyList = document.getElementById('todo-empty-list');
+import { createSvg } from './utils/createSvg.js';
+
 const todoList = document.getElementById('todo-list');
 
 const todoForm = document.querySelector('form');
 const todoInput = document.getElementById('todo-input');
 
-function createEmptyListMsg(value) {
-  todoEmptyList.style.display = `${value}`;
-
-  const imgEl = document.createElement('img');
-  imgEl.className = 'empty-list-img';
-  imgEl.src = 'empty-list.png';
-
-  const pEl = document.createElement('p');
-  pEl.className = 'empty-list-text';
-  pEl.textContent = 'Your to-do list is empty';
-
-  todoEmptyList.appendChild(imgEl);
-  todoEmptyList.appendChild(pEl);
-}
-
-function hideEmptyListMsg() {
-  return todoEmptyList.style.display = 'none';
-}
-const hiddenResult = hideEmptyListMsg();
-
-function showEmptyListMsg() {
-  return todoEmptyList.style.display = 'inline';
-}
-const shownResult = showEmptyListMsg();
-
-function saveEmptyListMsg() {
-  if (todoEmptyList.style.display === hiddenResult) {
-    localStorage.setItem('display', hiddenResult);
-  } else if (todoEmptyList.style.display === shownResult) {
-    localStorage.setItem('display', shownResult);
-  }
-}
-
-function getEmptyListDisplayState() {
-  return localStorage.getItem('display');
-}
 const displayResult = getEmptyListDisplayState();
-
 createEmptyListMsg(displayResult);
 
-let allTodos = getTodos();
+const allTodos = getTodos();
 updateTodoList();
 
 function addTodo() {
@@ -99,7 +69,7 @@ function createTodo(object, index) {
   labelEl.className = 'todo-custom-checkbox';
   labelEl.setAttribute('for', `${elemId}`);
 
-  const svgO = createSvgEl(
+  const svgO = createSvg(
     'M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'
   );
   labelEl.appendChild(svgO);
@@ -111,7 +81,7 @@ function createTodo(object, index) {
   const btnEl = document.createElement('button');
   btnEl.className = 'todo-delete-button';
 
-  const svgX = createSvgEl(
+  const svgX = createSvg(
     'm256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z'
   );
   btnEl.appendChild(svgX);
