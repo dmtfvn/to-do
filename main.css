@@ -121,6 +121,7 @@ form>button>svg {
   color: hsl(0, 1%, 20%);
   padding: 15px;
   flex-grow: 1;
+  overflow-wrap: anywhere;
 }
 
 .todo-delete-button {
