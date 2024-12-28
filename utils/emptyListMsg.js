@@ -25,7 +25,7 @@ export function showEmptyListMsg() {
 }
 const shownResult = showEmptyListMsg();
 
-export function saveEmptyListMsg() {
+export function saveEmptyListDisplayState() {
   if (todoEmptyList.style.display === 'none') {
     localStorage.setItem('display', hiddenResult);
   } else if (todoEmptyList.style.display === 'block') {

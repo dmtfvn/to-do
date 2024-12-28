@@ -2,8 +2,8 @@ import {
   createEmptyListMsg,
   hideEmptyListMsg,
   showEmptyListMsg,
-  saveEmptyListMsg,
-  getEmptyListDisplayState
+  getEmptyListDisplayState,
+  saveEmptyListDisplayState
 } from './utils/emptyListMsg.js';
 
 import { createSvg } from './utils/createSvg.js';
@@ -35,7 +35,7 @@ function addTodo() {
 
   if (allTodos.length > 0) {
     hideEmptyListMsg();
-    saveEmptyListMsg();
+    saveEmptyListDisplayState();
   }
 
   saveTodos();
@@ -49,7 +49,7 @@ function deleteTodo(idx) {
 
   if (allTodos.length === 0) {
     showEmptyListMsg();
-    saveEmptyListMsg();
+    saveEmptyListDisplayState();
   }
 
   saveTodos();
