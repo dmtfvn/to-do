@@ -8,10 +8,10 @@ import {
 
 import { createSvg } from './utils/createSvg.js';
 
-const todoList = document.getElementById('todo-list');
+const todoList = document.querySelector('#todo-list');
 
 const todoForm = document.querySelector('form');
-const todoInput = document.getElementById('todo-input');
+const todoInput = document.querySelector('#todo-input');
 
 const displayResult = getEmptyListDisplayState();
 createEmptyListMsg(displayResult);
