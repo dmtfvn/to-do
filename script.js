@@ -117,7 +117,6 @@ function updateTodoList() {
 
     todoList.appendChild(todo);
 
-    document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   });
 }
