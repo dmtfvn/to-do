@@ -1,4 +1,4 @@
-const todoEmptyList = document.getElementById('todo-empty-list');
+const todoEmptyList = document.querySelector('figure');
 
 export function createEmptyListMsg(value) {
   todoEmptyList.style.display = `${value}`;
