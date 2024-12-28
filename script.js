@@ -22,24 +22,26 @@ updateTodoList();
 function addTodo() {
   const todoText = todoInput.value.trim();
 
-  if (todoText.length > 0) {
-    const todoObj = {
-      text: todoText,
-      complete: false
-    };
-
-    allTodos.unshift(todoObj);
-
-    if (allTodos.length > 0) {
-      hideEmptyListMsg();
-      saveEmptyListMsg();
-    }
-
-    saveTodos();
-    updateTodoList();
-
-    todoInput.value = '';
+  if (todoText === '') {
+    return;
   }
+
+  const todoObj = {
+    text: todoText,
+    complete: false
+  };
+
+  allTodos.unshift(todoObj);
+
+  if (allTodos.length > 0) {
+    hideEmptyListMsg();
+    saveEmptyListMsg();
+  }
+
+  saveTodos();
+  updateTodoList();
+
+  todoInput.value = '';
 }
 
 function deleteTodo(idx) {
@@ -107,19 +109,16 @@ function createTodo(object, index) {
   return newElem;
 }
 
-function scrollBodyTop() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-
 function updateTodoList() {
   todoList.replaceChildren();
 
   allTodos.forEach((obj, i) => {
-    const todoItem = createTodo(obj, i);
-    todoList.appendChild(todoItem);
+    const todo = createTodo(obj, i);
 
-    scrollBodyTop();
+    todoList.appendChild(todo);
+
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   });
 }
 
