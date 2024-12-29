@@ -166,5 +166,11 @@ input[type="checkbox"]:checked~.todo-text {
 }
 
 input[type="checkbox"] {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  clip-path: rect(0 0 0 0);
+}
+
+input[type="checkbox"]:focus+label {
+  border: 2px solid hsla(170, 55%, 5%, 0.3);
 }
