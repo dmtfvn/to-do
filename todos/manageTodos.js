@@ -1,8 +1,3 @@
-import {
-  showEmptyListMsg,
-  saveEmptyListDisplayState
-} from '../utils/emptyListMsg.js';
-
 import { saveTodoList } from './saveTodos.js';
 import { updateTodoList } from './updateTodos.js';
 
@@ -60,11 +55,6 @@ export function createTodo(object, index, allTodos) {
 
   function deleteTodo(idx) {
     allTodos.splice(idx, 1);
-
-    if (allTodos.length === 0) {
-      showEmptyListMsg();
-      saveEmptyListDisplayState();
-    }
 
     saveTodoList(allTodos);
     updateTodoList(allTodos);
