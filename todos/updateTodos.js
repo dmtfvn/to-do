@@ -18,6 +18,4 @@ export function updateTodoList(allTodos) {
 
     todoList.appendChild(todo);
   });
-
-  document.documentElement.scrollTop = 0;
 }

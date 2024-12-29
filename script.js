@@ -12,4 +12,6 @@ todoForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
   addTodo(allTodos);
+
+  document.documentElement.scrollTop = 0;
 });
