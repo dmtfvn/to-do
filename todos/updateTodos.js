@@ -1,4 +1,4 @@
-import { createEmptyListMsg } from '../utils/emptyListMsg.js';
+import { createFigure } from '../utils/createFigure.js';
 import { createTodo } from './manageTodos.js';
 
 export function updateTodoList(allTodos) {
@@ -6,7 +6,7 @@ export function updateTodoList(allTodos) {
   const todoEmptyList = document.querySelector('figure');
 
   if (allTodos.length === 0) {
-    createEmptyListMsg();
+    createFigure();
   } else {
     todoEmptyList.replaceChildren();
   }
@@ -17,7 +17,7 @@ export function updateTodoList(allTodos) {
     const todo = createTodo(obj, i, allTodos);
 
     todoList.appendChild(todo);
-
-    document.documentElement.scrollTop = 0;
   });
+
+  document.documentElement.scrollTop = 0;
 }

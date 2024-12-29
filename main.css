@@ -2,6 +2,10 @@
 @import url('./styles/colors.css');
 @import url('./styles/reset.css');
 
+html {
+  font: 16px/1.5 Roboto, Arial, sans-serif;
+}
+
 body,
 input[type="text"] {
   font: inherit;

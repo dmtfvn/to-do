@@ -1,4 +1,4 @@
-export function createEmptyListMsg() {
+export function createFigure() {
   const todoEmptyList = document.querySelector('figure');
 
   const imgEl = document.createElement('img');
