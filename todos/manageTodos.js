@@ -7,8 +7,8 @@ export function createTodo(object, index, allTodos) {
   const elemId = `todo-${index}`;
   const string = object.text;
 
-  const newElem = document.createElement('li');
-  newElem.className = 'todo-element';
+  const listEl = document.createElement('li');
+  listEl.className = 'todo-element';
 
   const inputEl = document.createElement('input');
   inputEl.id = `${elemId}`;
@@ -35,17 +35,17 @@ export function createTodo(object, index, allTodos) {
   );
   btnEl.appendChild(svgX);
 
-  newElem.appendChild(inputEl);
-  newElem.appendChild(labelEl);
-  newElem.appendChild(pEl);
-  newElem.appendChild(btnEl);
+  listEl.appendChild(inputEl);
+  listEl.appendChild(labelEl);
+  listEl.appendChild(pEl);
+  listEl.appendChild(btnEl);
 
-  const deleteBtn = newElem.querySelector('.todo-delete-button');
+  const deleteBtn = listEl.querySelector('.todo-delete-button');
   deleteBtn.addEventListener('click', function () {
     deleteTodo(index);
   });
 
-  const checkBox = newElem.querySelector('input');
+  const checkBox = listEl.querySelector('input');
   checkBox.addEventListener('change', function () {
     allTodos[index].complete = checkBox.checked;
 
@@ -60,5 +60,5 @@ export function createTodo(object, index, allTodos) {
     updateTodoList(allTodos);
   }
 
-  return newElem;
+  return listEl;
 }
