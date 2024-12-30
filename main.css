@@ -42,7 +42,7 @@ main>ul {
 
 .todo-logo p {
   color: hsl(40, 30%, 50%);
-  font-size: 1.8rem;
+  font-size: 1.8em;
   font-weight: 300;
 }
 
@@ -135,12 +135,17 @@ form>button>svg {
   cursor: pointer;
 }
 
-.todo-delete-button svg {
-  fill: var(--gy-ish-clr);
+.todo-delete-button::before {
+  display: block;
+  content: '\f00d';
+  font-family: 'Font Awesome 6 Free';
+  font-size: 1.6em;
+  color: var(--gy-ish-clr);
 }
 
 .todo-custom-checkbox {
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 24px;
   height: 24px;
@@ -149,12 +154,16 @@ form>button>svg {
   cursor: pointer;
 }
 
-.todo-custom-checkbox svg {
-  fill: transparent;
+.todo-custom-checkbox::before {
+  display: block;
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-size: 1em;
+  color: transparent;
 }
 
-input[type="checkbox"]:checked~.todo-custom-checkbox svg {
-  fill: var(--yt-clr);
+input[type="checkbox"]:checked~.todo-custom-checkbox::before {
+  color: var(--yt-clr);
 }
 
 input[type="checkbox"]:checked~.todo-custom-checkbox {

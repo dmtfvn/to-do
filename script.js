@@ -1,3 +1,4 @@
+import { saveTodoList } from './todos/saveTodos.js';
 import { updateTodoList } from './todos/updateTodos.js';
 import { addTodo } from './todos/addTodos.js';
 
@@ -7,8 +8,36 @@ const allTodos = JSON.parse(data);
 
 updateTodoList(allTodos);
 
+const todoList = document.querySelector('#todo-list');
 const todoForm = document.querySelector('form');
-todoForm.addEventListener('submit', function (e) {
+
+todoList.addEventListener('click', (e) => {
+  if (e.target.nodeName === 'BUTTON') {
+    const parentEl = e.target.closest('li');
+    const elemId = parentEl.querySelector('input').id;
+
+    const idx = elemId.split('-')[1];
+
+    allTodos.splice(idx, 1);
+
+    saveTodoList(allTodos);
+    updateTodoList(allTodos);
+  }
+});
+
+todoList.addEventListener('change', (e) => {
+  const checkbox = e.target;
+
+  if (e.target.nodeName === 'INPUT') {
+    const idx = checkbox.id.split('-')[1];
+
+    allTodos[idx].complete = checkbox.checked;
+
+    saveTodoList(allTodos);
+  }
+});
+
+todoForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   addTodo(allTodos);

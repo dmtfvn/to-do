@@ -1,5 +1,5 @@
 import { createFigure } from '../utils/createFigure.js';
-import { createTodo } from './manageTodos.js';
+import { createTodo } from './createTodos.js';
 
 export function updateTodoList(allTodos) {
   const todoList = document.querySelector('#todo-list');
@@ -14,7 +14,7 @@ export function updateTodoList(allTodos) {
   todoList.replaceChildren();
 
   allTodos.forEach((obj, i) => {
-    const todo = createTodo(obj, i, allTodos);
+    const todo = createTodo(obj, i);
 
     todoList.appendChild(todo);
   });
