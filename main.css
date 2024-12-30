@@ -139,7 +139,7 @@ form>button>svg {
   display: block;
   content: '\f00d';
   font-family: 'Font Awesome 6 Free';
-  font-size: 1.6em;
+  font-size: 1.8em;
   color: var(--gy-ish-clr);
 }
 
@@ -147,6 +147,7 @@ form>button>svg {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
   width: 24px;
   height: 24px;
   border: 2px solid var(--yt-clr);
