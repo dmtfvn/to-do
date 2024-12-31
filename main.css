@@ -137,7 +137,7 @@ form>button>svg {
 
 .todo-delete-button::before {
   display: block;
-  content: '\f00d';
+  content: '\f2d3';
   font-family: 'Font Awesome 6 Free';
   font-size: 1.8em;
   color: var(--gy-ish-clr);
@@ -179,6 +179,7 @@ input[type="checkbox"] {
   opacity: 0;
   position: absolute;
   clip-path: rect(0 0 0 0);
+  pointer-events: none;
 }
 
 @media (hover: hover) {
