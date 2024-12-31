@@ -26,12 +26,12 @@ todoList.addEventListener('click', (e) => {
 });
 
 todoList.addEventListener('change', (e) => {
-  const checkbox = e.target;
+  const checkboxEl = e.target;
 
   if (e.target.nodeName === 'INPUT') {
-    const idx = checkbox.id.split('-')[1];
+    const idx = checkboxEl.id.split('-')[1];
 
-    allTodos[idx].complete = checkbox.checked;
+    allTodos[idx].complete = checkboxEl.checked;
 
     saveTodoList(allTodos);
   }
