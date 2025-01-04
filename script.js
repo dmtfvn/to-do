@@ -8,7 +8,7 @@ const allTodos = JSON.parse(data);
 
 updateTodoList(allTodos);
 
-const todoList = document.querySelector('#todo-list');
+const todoList = document.querySelector('.todo-list');
 const todoForm = document.querySelector('form');
 
 todoList.addEventListener('click', (e) => {

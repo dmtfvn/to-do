@@ -143,7 +143,7 @@ form>button>svg {
   color: var(--gy-ish-clr);
 }
 
-.todo-custom-checkbox {
+label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,7 +155,7 @@ form>button>svg {
   cursor: pointer;
 }
 
-.todo-custom-checkbox::before {
+label::before {
   display: block;
   content: '\f00c';
   font-family: 'Font Awesome 6 Free';
@@ -163,11 +163,11 @@ form>button>svg {
   color: transparent;
 }
 
-input[type="checkbox"]:checked~.todo-custom-checkbox::before {
+input[type="checkbox"]:checked+label::before {
   color: var(--yt-clr);
 }
 
-input[type="checkbox"]:checked~.todo-custom-checkbox {
+input[type="checkbox"]:checked+label {
   background-color: var(--gy-ish-clr);
 }
 

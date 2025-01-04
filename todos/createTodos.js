@@ -11,7 +11,6 @@ export function createTodo(object, index) {
   inputEl.checked = object.complete;
 
   const labelEl = document.createElement('label');
-  labelEl.className = 'todo-custom-checkbox';
   labelEl.setAttribute('for', `${elemId}`);
 
   const pEl = document.createElement('p');

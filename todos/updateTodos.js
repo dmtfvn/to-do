@@ -2,7 +2,7 @@ import { createFigure } from '../utils/createFigure.js';
 import { createTodo } from './createTodos.js';
 
 export function updateTodoList(allTodos) {
-  const todoList = document.querySelector('#todo-list');
+  const todoList = document.querySelector('.todo-list');
   const todoEmptyList = document.querySelector('figure');
 
   if (allTodos.length === 0) {

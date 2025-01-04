@@ -2,7 +2,7 @@ import { saveTodoList } from './saveTodos.js';
 import { updateTodoList } from './updateTodos.js';
 
 export function addTodo(allTodos) {
-  const todoInput = document.querySelector('#todo-input');
+  const todoInput = document.querySelector('.todo-input');
 
   const todoText = todoInput.value.trim();
 
