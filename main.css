@@ -41,9 +41,9 @@ main>ul {
 }
 
 .todo-logo p {
-  color: hsl(40, 30%, 50%);
   font-size: 1.8em;
   font-weight: 300;
+  color: hsl(40, 30%, 50%);
 }
 
 .todo-logo img {
@@ -72,10 +72,10 @@ main>ul {
 
 form {
   background-color: var(--yt-clr);
-  box-shadow: 0 0 10px var(--bk-ish-clr);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 0 10px var(--bk-ish-clr);
   padding: 15px 10px;
   height: 130px;
   left: 0;
